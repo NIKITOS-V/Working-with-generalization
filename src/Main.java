@@ -18,45 +18,54 @@ public class Main {
     }
 
     private static <T extends Number> void printTask_1(T firstNumber, T secondNUmber){
-        System.out.printf(
-                "%s + %s = %s\n",
-                firstNumber,
-                secondNUmber,
-                Calculator.sum(
-                        firstNumber,
-                        secondNUmber
-                )
-        );
 
-        System.out.printf(
-                "%s - %s = %s\n",
-                firstNumber,
-                secondNUmber,
-                Calculator.subtract(
-                        firstNumber,
-                        secondNUmber
-                )
-        );
+       System.out.println(
+               getStringFormat(
+                       firstNumber,
+                       '+',
+                       secondNUmber,
+                       Calculator.sum(
+                               firstNumber,
+                               secondNUmber
+                       )
+               )
+       );
 
-        System.out.printf(
-                "%s * %s = %s\n",
-                firstNumber,
-                secondNUmber,
-                Calculator.multiply(
-                        firstNumber,
-                        secondNUmber
-                )
-        );
+       System.out.println(
+               getStringFormat(
+                       firstNumber,
+                       '-',
+                       secondNUmber,
+                       Calculator.subtract(
+                               firstNumber,
+                               secondNUmber
+                       )
+               )
+       );
 
-        System.out.printf(
-                "%s / %s = %s\n",
-                firstNumber,
-                secondNUmber,
-                Calculator.divide(
-                        firstNumber,
-                        secondNUmber
-                )
-        );
+       System.out.println(
+               getStringFormat(
+                       firstNumber,
+                       '*',
+                       secondNUmber,
+                       Calculator.multiply(
+                               firstNumber,
+                               secondNUmber
+                       )
+               )
+       );
+
+       System.out.println(
+               getStringFormat(
+                       firstNumber,
+                       '/',
+                       secondNUmber,
+                       Calculator.divide(
+                               firstNumber,
+                               secondNUmber
+                       )
+               )
+       );
     }
 
     private static void printTask_2(){
@@ -67,27 +76,37 @@ public class Main {
         Integer[] integers_2 = {2, 3, 4, 5, 6, 7};
 
         System.out.println(
-                getStrongFormat(integers_1, integers_2)
+                getStringFormat(integers_1, integers_2) + "\n"
         );
 
         System.out.println(
-                getStrongFormat(integers_1, floats)
+                getStringFormat(integers_1, floats) + "\n"
         );
 
         System.out.println(
-                getStrongFormat(integers_2, floats)
+                getStringFormat(integers_2, floats) + "\n"
         );
     }
 
-    private static <T> String getStrongFormat(T[] firstArray, T[] secondArray){
+    private static <T> String getStringFormat(T[] firstArray, T[] secondArray){
         return String.format(
-               "comparison:\n\t%s\n\t%s\nresult: %s\n",
+               "comparison:\n\t%s\n\t%s\nresult: %s",
                Arrays.toString(firstArray),
                Arrays.toString(secondArray),
                ArraysCalculator.compareArrays(
                        firstArray,
                        secondArray
                )
+        );
+    }
+
+    private static <T extends Number> String getStringFormat(T firstNumber, char operation, T secondNUmber, T result){
+        return String.format(
+                "%s %s %s = %s",
+                firstNumber,
+                operation,
+                secondNUmber,
+                result
         );
     }
 }
